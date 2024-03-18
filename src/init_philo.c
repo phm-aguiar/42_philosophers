@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:30:56 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/15 16:58:02 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:23:37 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,9 @@ t_philo	*new_philo(int id)
 	philo->id = id;
 	pthread_mutex_init(&philo->fork, NULL);
 	philo->num_eat = 0;
-	philo->is_taken = FALSE;
-	philo->is_eating = FALSE;
-	philo->is_sleeping = FALSE;
-	philo->is_thinking = FALSE;
 	philo->is_dead = FALSE;
 	philo->num_forks = 0;
+	philo->last_meal = 0;
 	philo->next = NULL;
 	philo->prev = NULL;
 	return (philo);

@@ -6,27 +6,20 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:47:10 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/15 18:03:00 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:30:51 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long	get_time(int time_code)
-{
-	struct timeval	tv;
-
-	(void)time_code;
-	if (gettimeofday(&tv, NULL))
-		exit(1);
-	return ((tv.tv_sec * 1e6) + (tv.tv_usec / 1e6));
-}
-
 void	print_status(t_philo *philo, char *status)
 {
-	get_core()->start_time += 100;
-	usleep(100);
-	printf("%li %d %s\n", get_core()->start_time, philo->id, status);
+	long	time;
+
+	time = get_time(MILLISEC) - get_core()->start_time;
+	pthread_mutex_lock(&get_core()->print_status);
+	printf("%li %d %s\n", time, philo->id, status);
+	pthread_mutex_unlock(&get_core()->print_status);
 }
 
 void	wait_for_threads(t_philo *philo)
@@ -42,28 +35,20 @@ void	wait_for_threads(t_philo *philo)
 	}
 }
 
+// pthread_create(&get_core()->monitor, NULL, monitor, (void *)philo);
 void	create_threads(t_philo *philo)
 {
 	int	i;
-	int	j;
 
-	j = 0;
-	while (!get_core()->dead)
+	i = 0;
+	get_core()->start_time = get_time(MILLISEC);
+	while (i < get_core()->num_philos)
 	{
-		i = 0;
-		while (i < get_core()->num_philos)
-		{
-			pthread_create(&philo->thread, NULL, take_fork, (void *)philo);
-			philo = philo->next;
-			i++;
-		}
-		wait_for_threads(philo);
-		if (j == 4)
-			get_core()->dead = TRUE;
-		usleep(100);
-		printf("%d\n", j);
-		j++;
+		pthread_create(&philo->thread, NULL, dinner, (void *)philo);
+		philo = philo->next;
+		i++;
 	}
+	wait_for_threads(philo);
 }
 
 int	main(int argc, char **argv)
@@ -79,14 +64,9 @@ int	main(int argc, char **argv)
 	get_core()->time_to_die = atoi(argv[2]) * 1000;
 	get_core()->time_to_eat = atoi(argv[3]) * 1000;
 	get_core()->time_to_sleep = atoi(argv[4]) * 1000;
-	if (argc == 6)
-		get_core()->num_must_eat = atoi(argv[5]);
-	else
-		get_core()->num_must_eat = -1;
 	init_philos();
 	philo = get_core()->head;
 	create_threads(philo);
-	wait_for_threads(philo);
 	return (0);
 }
 // print_philo();

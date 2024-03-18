@@ -6,66 +6,69 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:10:31 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/15 18:02:16 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:31:42 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+void	thinking(t_philo *philo)
+{
+	print_status(philo, "is thinking");
+	if (philo->num_forks == 0)
+		take_fork(philo);
+}
+
 void	sleeping(t_philo *philo)
 {
-	philo->is_sleeping = TRUE;
 	print_status(philo, "is sleeping");
 	usleep(get_core()->time_to_sleep);
-	philo->is_sleeping = FALSE;
+	thinking(philo);
 }
 
 void	eating(t_philo *philo)
 {
-	philo->is_eating = TRUE;
-	usleep(100);
+	if (get_time(MILLISEC) - philo->last_meal > get_core()->time_to_die / 1000)
+	{
+		philo->is_dead = TRUE;
+		get_core()->dead = TRUE;
+		print_status(philo, "died");
+		return ;
+	}
 	print_status(philo, "is eating");
 	usleep(get_core()->time_to_eat);
+	philo->last_meal = get_time(MILLISEC);
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->next->fork);
-	philo->is_taken = FALSE;
 	philo->num_forks = 0;
 	philo->num_eat++;
+	sleeping(philo);
 }
 
-t_bool	fork_next_philo(t_philo *philo)
+void	take_fork(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->next->fork);
-	philo->num_forks = 2;
+	if (philo->is_dead)
+		return ;
+	pthread_mutex_lock(&philo->fork);
 	print_status(philo, "has taken a fork");
+	pthread_mutex_lock(&philo->next->fork);
+	print_status(philo, "has taken a fork");
+	philo->num_forks = 2;
 	eating(philo);
-	return (TRUE);
 }
 
-void	*take_fork(void *arg)
+void	*dinner(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	philo->last_meal = get_core()->start_time;
 	if (philo->id % 2 == 0)
-		usleep(1000);
-	if (!pthread_mutex_lock(&philo->fork))
-	{
-		print_status(philo, "has taken a fork");
-	}
-	philo->num_forks = 1;
-	while (philo->next->num_forks == 2)
-	{
-		pthread_mutex_unlock(&philo->fork);
-		philo->num_forks = 0;
 		usleep(100);
-	}
-	if (philo->next->num_forks == 0)
+	while (!get_core()->dead)
 	{
-		fork_next_philo(philo);
+		take_fork(philo);
 	}
-	if (philo->is_eating == TRUE)
-		sleeping(philo);
 	return (NULL);
 }
 
