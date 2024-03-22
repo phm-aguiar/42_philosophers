@@ -66,7 +66,7 @@ fclean: clean
 re: fclean all
 
 run: all
-	$(HIDE)./$(NAME) 3 410 200 200
+	$(HIDE)./$(NAME) 4 410 200 200
 
 make_temp:
 	@mkdir -p $(TEMP_PATH)

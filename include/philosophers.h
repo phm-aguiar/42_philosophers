@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:46:33 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/22 16:57:58 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:13:15 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_philo
 	long				time_to_sleep;
 	int					num_eat;
 	t_bool				is_dead;
+	t_bool				is_taken;
 	int					num_forks;
 	t_philo				*next;
 	t_philo				*prev;
@@ -65,6 +66,7 @@ typedef struct s_data
 	int					time_to_sleep;
 	int					num_must_eat;
 	long				start_time;
+	pthread_mutex_t		taken;
 	pthread_mutex_t		print_status;
 	pthread_mutex_t		check_dead_mutex;
 	pthread_mutex_t		dead_mutex;

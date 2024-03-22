@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:10:31 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/22 17:07:01 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:19:22 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	unlock_forks(t_philo *philo)
 		i++;
 	}
 }
-	// if (philo->num_forks == 1)
-	// 	pthread_mutex_unlock(&philo->fork);
-	// else if (philo->num_forks == 2)
-	// {
-	// 	pthread_mutex_unlock(&philo->fork);
-	// 	pthread_mutex_unlock(&philo->next->fork);
-	// }
+// if (philo->num_forks == 1)
+// 	pthread_mutex_unlock(&philo->fork);
+// else if (philo->num_forks == 2)
+// {
+// 	pthread_mutex_unlock(&philo->fork);
+// 	pthread_mutex_unlock(&philo->next->fork);
+// }
 
 t_bool	imdead(t_philo *philo)
 {
@@ -133,7 +133,7 @@ void	*dinner(void *arg)
 	philo = (t_philo *)arg;
 	philo->last_meal = get_core()->start_time;
 	if (philo->id % 2 == 0)
-		usleep(800);
+		usleep(1000);
 	take_fork(philo);
 	pthread_mutex_destroy(&philo->fork);
 	return (NULL);
