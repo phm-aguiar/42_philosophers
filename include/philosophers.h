@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:46:33 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/18 19:08:20 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:57:58 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,14 @@ typedef struct s_data
 	int					num_must_eat;
 	long				start_time;
 	pthread_mutex_t		print_status;
+	pthread_mutex_t		check_dead_mutex;
+	pthread_mutex_t		dead_mutex;
 	t_bool				dead;
+	t_bool				printed;
 	t_philo				*head;
 }						t_data;
 
 t_data					*get_core(void);
-void					print_philo(void);
 void					init_philos(void);
 t_philo					*new_philo(int id);
 void					add_philo_back(t_philo **philo, t_philo *new);
@@ -95,6 +97,7 @@ long					get_time(t_time unit_of_measurement);
 
 void					error(char *msg);
 
-void					*monitor(void *arg);
+void					init_all_mutex(void);
+void					*dinner_solo(void *arg);
 
 #endif // PHILOSOPHERS_H

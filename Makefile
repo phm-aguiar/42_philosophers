@@ -66,16 +66,10 @@ fclean: clean
 re: fclean all
 
 run: all
-	$(HIDE)./$(NAME) 4 400 210 200
+	$(HIDE)./$(NAME) 3 410 200 200
 
 make_temp:
 	@mkdir -p $(TEMP_PATH)
 
 valgrind: all make_temp 
-	@valgrind -s -q --tool=helgrind --log-file=$(TEMP_PATH)valgrind.log ./$(NAME) 4 410 400 400
-
-		--leak-check=full \
-	# --show-reachable=yes \
-	# --show-leak-kinds=all \
-	# --track-origins=yes \
-	# --track-fds=yes \
+	@valgrind -s -q  --log-file=$(TEMP_PATH)valgrind.log ./$(NAME) 4 410 200 200

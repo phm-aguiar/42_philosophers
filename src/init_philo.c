@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:30:56 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/18 19:23:37 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:41:11 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ t_philo	*new_philo(int id)
 	return (philo);
 }
 
+void	init_all_mutex(void)
+{
+	pthread_mutex_init(&get_core()->print_status, NULL);
+	pthread_mutex_init(&get_core()->dead_mutex, NULL);
+	pthread_mutex_init(&get_core()->check_dead_mutex, NULL);
+}
+
 t_data	*get_core(void)
 {
 	static t_data	core;
@@ -63,26 +70,4 @@ void	init_philos(void)
 		i++;
 	}
 	get_core()->head = philo;
-}
-
-void	print_philo(void)
-{
-	int		i;
-	t_philo	*philos;
-
-	i = 0;
-	philos = get_core()->head;
-	while (i < get_core()->num_philos)
-	{
-		printf("================================\n");
-		printf("philo %d\n", philos->id);
-		printf("philo atual %p\n", philos);
-		printf("philo next %p\n", philos->next);
-		printf("philo id next %d\n", philos->next->id);
-		printf("philo prev %p\n", philos->prev);
-		printf("philo id prev %d\n", philos->prev->id);
-		philos = philos->next;
-		i++;
-	}
-	i = 0;
 }
