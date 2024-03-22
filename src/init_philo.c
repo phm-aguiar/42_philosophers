@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:30:56 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/15 16:58:02 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:13:08 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,20 @@ t_philo	*new_philo(int id)
 	philo->id = id;
 	pthread_mutex_init(&philo->fork, NULL);
 	philo->num_eat = 0;
-	philo->is_taken = FALSE;
-	philo->is_eating = FALSE;
-	philo->is_sleeping = FALSE;
-	philo->is_thinking = FALSE;
 	philo->is_dead = FALSE;
+	philo->is_taken = FALSE;
 	philo->num_forks = 0;
+	philo->last_meal = 0;
 	philo->next = NULL;
 	philo->prev = NULL;
 	return (philo);
+}
+
+void	init_all_mutex(void)
+{
+	pthread_mutex_init(&get_core()->print_status, NULL);
+	pthread_mutex_init(&get_core()->dead_mutex, NULL);
+	pthread_mutex_init(&get_core()->check_dead_mutex, NULL);
 }
 
 t_data	*get_core(void)
@@ -66,26 +71,4 @@ void	init_philos(void)
 		i++;
 	}
 	get_core()->head = philo;
-}
-
-void	print_philo(void)
-{
-	int		i;
-	t_philo	*philos;
-
-	i = 0;
-	philos = get_core()->head;
-	while (i < get_core()->num_philos)
-	{
-		printf("================================\n");
-		printf("philo %d\n", philos->id);
-		printf("philo atual %p\n", philos);
-		printf("philo next %p\n", philos->next);
-		printf("philo id next %d\n", philos->next->id);
-		printf("philo prev %p\n", philos->prev);
-		printf("philo id prev %d\n", philos->prev->id);
-		philos = philos->next;
-		i++;
-	}
-	i = 0;
 }
