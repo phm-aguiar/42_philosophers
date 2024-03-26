@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:46:33 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/22 17:13:15 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:56:52 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,12 @@ void					add_philo_back(t_philo **philo, t_philo *new);
 
 void					take_fork(t_philo *philo);
 void					eating(t_philo *philo);
-t_bool					fork_next_philo(t_philo *philo);
+void					sleeping(t_philo *philo);
+void					thinking(t_philo *philo);
 void					*dinner(void *arg);
+t_bool					imdead(t_philo *philo);
+void					unlock_forks(t_philo *philo);
+void					*monitor(void *arg);
 
 // print_status.c
 

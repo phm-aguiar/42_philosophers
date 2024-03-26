@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:47:10 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/22 16:56:14 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:59:39 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_status(t_philo *philo, char *status)
 	pthread_mutex_unlock(&get_core()->print_status);
 }
 
-void	wait_for_threads(t_philo *philo)
+void	wait_for_threads(t_philo *philo, pthread_t waiter)
 {
 	int	i;
 
@@ -33,12 +33,14 @@ void	wait_for_threads(t_philo *philo)
 		philo = philo->next;
 		i++;
 	}
+	pthread_join(waiter, NULL);
 }
 
 // pthread_create(&get_core()->monitor, NULL, monitor, (void *)philo);
 void	create_threads(t_philo *philo)
 {
-	int	i;
+	int			i;
+	pthread_t	waiter;
 
 	i = 0;
 	get_core()->start_time = get_time(MILLISEC);
@@ -54,7 +56,8 @@ void	create_threads(t_philo *philo)
 		philo = philo->next;
 		i++;
 	}
-	wait_for_threads(philo);
+	pthread_create(&waiter, NULL, monitor, (void *)philo);
+	wait_for_threads(philo, waiter);
 }
 // wait_for_threads(philo);
 
