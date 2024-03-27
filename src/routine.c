@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 14:22:17 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/26 17:53:25 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:34:11 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	eating(t_philo *philo)
 	usleep(get_core()->time_to_eat);
 	if (imdead(philo))
 		return ;
+	pthread_mutex_lock(&get_mutex()->check_eat_mutex);
 	philo->last_meal = get_time(MILLISEC);
+	pthread_mutex_unlock(&get_mutex()->check_eat_mutex);
 	if (imdead(philo))
 		return ;
 	pthread_mutex_unlock(&philo->fork);
@@ -67,16 +69,18 @@ void	take_fork(t_philo *philo)
 	pthread_mutex_lock(&philo->next->fork);
 	if (imdead(philo))
 		return ;
+	print_status(philo, "has taken a fork");
+	if (imdead(philo))
+		return ;
 	pthread_mutex_lock(&philo->fork);
 	if (imdead(philo))
 		return ;
 	print_status(philo, "has taken a fork");
 	if (imdead(philo))
 		return ;
-	print_status(philo, "has taken a fork");
-	if (imdead(philo))
-		return ;
+	pthread_mutex_lock(&get_mutex()->forks_mutex);
 	philo->num_forks = 2;
+	pthread_mutex_unlock(&get_mutex()->forks_mutex);
 	if (imdead(philo))
 		return ;
 	eating(philo);

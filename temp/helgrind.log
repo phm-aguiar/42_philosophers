@@ -1,0 +1,1086 @@
+==22556== ---Thread-Announcement------------------------------------------
+==22556== 
+==22556== Thread #5 was created
+==22556==    at 0x497995F: clone (clone.S:76)
+==22556==    by 0x4979A08: __clone_internal (clone-internal.c:83)
+==22556==    by 0x48F902F: create_thread (pthread_create.c:297)
+==22556==    by 0x48F9AED: pthread_create@@GLIBC_2.34 (pthread_create.c:833)
+==22556==    by 0x484BDD5: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10977C: create_threads (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1098AB: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5: lock order "0x4A56230 before 0x4A56050" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56050
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56230
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ---Thread-Announcement------------------------------------------
+==22556== 
+==22556== Thread #2 was created
+==22556==    at 0x497995F: clone (clone.S:76)
+==22556==    by 0x4979A08: __clone_internal (clone-internal.c:83)
+==22556==    by 0x48F902F: create_thread (pthread_create.c:297)
+==22556==    by 0x48F9AED: pthread_create@@GLIBC_2.34 (pthread_create.c:833)
+==22556==    by 0x484BDD5: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10977C: create_threads (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1098AB: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2: lock order "0x4A56050 before 0x4A560F0" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A560F0
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56050
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ---Thread-Announcement------------------------------------------
+==22556== 
+==22556== Thread #3 was created
+==22556==    at 0x497995F: clone (clone.S:76)
+==22556==    by 0x4979A08: __clone_internal (clone-internal.c:83)
+==22556==    by 0x48F902F: create_thread (pthread_create.c:297)
+==22556==    by 0x48F9AED: pthread_create@@GLIBC_2.34 (pthread_create.c:833)
+==22556==    by 0x484BDD5: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10977C: create_threads (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1098AB: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #3: lock order "0x4A560F0 before 0x4A56190" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56190
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A560F0
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ---Thread-Announcement------------------------------------------
+==22556== 
+==22556== Thread #4 was created
+==22556==    at 0x497995F: clone (clone.S:76)
+==22556==    by 0x4979A08: __clone_internal (clone-internal.c:83)
+==22556==    by 0x48F902F: create_thread (pthread_create.c:297)
+==22556==    by 0x48F9AED: pthread_create@@GLIBC_2.34 (pthread_create.c:833)
+==22556==    by 0x484BDD5: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10977C: create_threads (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1098AB: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #4: lock order "0x4A56190 before 0x4A56230" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56230
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56190
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5: lock order "0x4A56230 before 0x4A56050" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56050
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56230
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked a not-locked lock at 0x4A56050
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked a not-locked lock at 0x4A560F0
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked lock at 0x4A56190 currently held by thread #3
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked lock at 0x4A56230 currently held by thread #4
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #3 unlocked lock at 0x4A56230 currently held by thread #4
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #3 unlocked a not-locked lock at 0x4A56050
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5 unlocked lock at 0x4A56230 currently held by thread #4
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C30: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5 unlocked a not-locked lock at 0x4A560F0
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C30: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5 unlocked a not-locked lock at 0x4A56190
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C30: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #4 unlocked a not-locked lock at 0x4A56050
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #4 unlocked a not-locked lock at 0x4A560F0
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 16 bytes inside a block of size 96 alloc'd
+==22556==    at 0x4842848: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109419: new_philo (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109565: init_philos (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10988D: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Block was alloc'd by thread #1
+==22556== 
+==22556== 
+==22556== ---Thread-Announcement------------------------------------------
+==22556== 
+==22556== Thread #1 is the program's root thread
+==22556== 
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #1's call to pthread_mutex_destroy failed
+==22556==    with error code 16 (EBUSY: Device or resource busy)
+==22556==    at 0x4848A90: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1095C5: destroy_mutexes (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1098B0: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556== 
+==22556== ERROR SUMMARY: 27 errors from 17 contexts (suppressed: 3764 from 203)
+==22556== 
+==22556== 1 errors in context 1 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #4 unlocked a not-locked lock at 0x4A560F0
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 176 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 2 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #4 unlocked a not-locked lock at 0x4A56050
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 3 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5 unlocked a not-locked lock at 0x4A56190
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C30: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 336 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 4 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5 unlocked a not-locked lock at 0x4A560F0
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C30: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 176 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 5 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5 unlocked lock at 0x4A56230 currently held by thread #4
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C30: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 496 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 6 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #3 unlocked a not-locked lock at 0x4A56050
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 7 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #3 unlocked lock at 0x4A56230 currently held by thread #4
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x10995A: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109C7E: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 496 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 8 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked lock at 0x4A56230 currently held by thread #4
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 496 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 9 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked lock at 0x4A56190 currently held by thread #3
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 336 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 10 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked a not-locked lock at 0x4A560F0
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 176 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 11 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2 unlocked a not-locked lock at 0x4A56050
+==22556==    at 0x484936D: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1098EF: unlock_forks (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1099BD: imdead (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BC9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 1 errors in context 12 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5: lock order "0x4A56230 before 0x4A56050" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56050
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56230
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 496 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 2 errors in context 13 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #5: lock order "0x4A56230 before 0x4A56050" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56050
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56230
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 496 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 3 errors in context 14 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #4: lock order "0x4A56190 before 0x4A56230" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56230
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56190
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 336 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556==  Lock at 0x4A56230 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56230 is 496 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 3 errors in context 15 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #3: lock order "0x4A560F0 before 0x4A56190" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A56190
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A560F0
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 176 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556==  Lock at 0x4A56190 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56190 is 336 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 3 errors in context 16 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #2: lock order "0x4A56050 before 0x4A560F0" violated
+==22556== 
+==22556== Observed (incorrect) order is: acquisition of lock at 0x4A560F0
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C24: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  followed by a later acquisition of lock at 0x4A56050
+==22556==    at 0x4848C1C: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x109C72: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A2B: thinking (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109A9D: sleeping (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109BD9: eating (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109CF5: take_fork (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109250: dinner (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x484BFDA: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x48F93EB: start_thread (pthread_create.c:444)
+==22556==    by 0x497996F: clone (clone.S:100)
+==22556== 
+==22556==  Lock at 0x4A56050 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a56050 is 16 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556==  Lock at 0x4A560F0 was first observed
+==22556==    at 0x484D74B: pthread_mutex_init (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x10949F: init_all_mutex (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x109892: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==  Address 0x4a560f0 is 176 bytes inside an unallocated block of size 576 in arena "client"
+==22556== 
+==22556== 
+==22556== 
+==22556== 4 errors in context 17 of 17:
+==22556== ----------------------------------------------------------------
+==22556== 
+==22556== Thread #1's call to pthread_mutex_destroy failed
+==22556==    with error code 16 (EBUSY: Device or resource busy)
+==22556==    at 0x4848A90: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==22556==    by 0x1095C5: destroy_mutexes (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556==    by 0x1098B0: main (in /home/zeenyt/projetos/Level_2/42_philosophers/philo)
+==22556== 
+--22556-- 
+--22556-- used_suppression:   3764 helgrind-glibc2X-005 /usr/libexec/valgrind/default.supp:955
+==22556== 
+==22556== ERROR SUMMARY: 27 errors from 17 contexts (suppressed: 3764 from 203)
