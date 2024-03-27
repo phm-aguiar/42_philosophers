@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:30:56 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/22 17:13:08 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:26:32 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ t_philo	*new_philo(int id)
 
 	philo = malloc(sizeof(t_philo));
 	philo->id = id;
-	pthread_mutex_init(&philo->fork, NULL);
 	philo->num_eat = 0;
-	philo->is_dead = FALSE;
-	philo->is_taken = FALSE;
 	philo->num_forks = 0;
-	philo->last_meal = 0;
+	philo->last_meal = get_time(MILLISEC);
 	philo->next = NULL;
 	philo->prev = NULL;
 	return (philo);
@@ -46,16 +43,23 @@ t_philo	*new_philo(int id)
 
 void	init_all_mutex(void)
 {
-	pthread_mutex_init(&get_core()->print_status, NULL);
-	pthread_mutex_init(&get_core()->dead_mutex, NULL);
-	pthread_mutex_init(&get_core()->check_dead_mutex, NULL);
-}
+	t_philo	*philo;
+	int		i;
 
-t_data	*get_core(void)
-{
-	static t_data	core;
-
-	return (&core);
+	i = 0;
+	philo = get_core()->head;
+	while (i < get_core()->num_philos)
+	{
+		pthread_mutex_init(&philo->fork, NULL);
+		philo = philo->next;
+		i++;
+	}
+	pthread_mutex_init(&get_mutex()->print_status, NULL);
+	pthread_mutex_init(&get_mutex()->dead_mutex, NULL);
+	pthread_mutex_init(&get_mutex()->check_dead_mutex, NULL);
+	pthread_mutex_init(&get_mutex()->check_eat_mutex, NULL);
+	pthread_mutex_init(&get_mutex()->core_mutex, NULL);
+	pthread_mutex_init(&get_mutex()->forks_mutex, NULL);
 }
 
 void	init_philos(void)

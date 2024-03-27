@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dinner.c                                           :+:      :+:    :+:   */
+/*   getter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/15 15:10:31 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:38:46 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/03/27 10:25:02 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/03/27 10:50:44 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*dinner(void *arg)
+t_data	*get_core(void)
 {
-	t_philo	*philo;
+	static t_data	core;
 
-	philo = (t_philo *)arg;
-	philo->last_meal = get_core()->start_time;
-	if (philo->id % 2 == 0)
-		usleep(100);
-	take_fork(philo);
-	return (NULL);
+	pthread_mutex_lock(&get_mutex()->core_mutex);
+	pthread_mutex_unlock(&get_mutex()->core_mutex);
+	return (&core);
 }
 
-void	*dinner_solo(void *arg)
+t_mutex	*get_mutex(void)
 {
-	t_philo	*philo;
+	static t_mutex	mutex;
 
-	philo = (t_philo *)arg;
-	pthread_mutex_lock(&philo->fork);
-	print_status(philo, "has taken a fork");
-	usleep(get_core()->time_to_die * 1000);
-	return (NULL);
+	return (&mutex);
 }

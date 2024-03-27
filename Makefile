@@ -66,10 +66,10 @@ fclean: clean
 re: fclean all
 
 run: all
-	$(HIDE)./$(NAME) 4 410 200 200
+	$(HIDE)./$(NAME) 4 400 200 200
 
 make_temp:
 	@mkdir -p $(TEMP_PATH)
 
 valgrind: all make_temp 
-	@valgrind -s -q  --log-file=$(TEMP_PATH)valgrind.log ./$(NAME) 4 410 200 200
+	@valgrind -s -q  --tool=helgrind --log-file=$(TEMP_PATH)helgrind.log ./$(NAME) 4 800 200 200
