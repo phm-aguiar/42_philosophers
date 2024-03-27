@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:30:56 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:26:32 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:05:19 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_philo	*new_philo(int id)
 	philo->id = id;
 	philo->num_eat = 0;
 	philo->num_forks = 0;
-	philo->last_meal = get_time(MILLISEC);
+	philo->last_meal = get_time();
 	philo->next = NULL;
 	philo->prev = NULL;
 	return (philo);
@@ -60,6 +60,7 @@ void	init_all_mutex(void)
 	pthread_mutex_init(&get_mutex()->check_eat_mutex, NULL);
 	pthread_mutex_init(&get_mutex()->core_mutex, NULL);
 	pthread_mutex_init(&get_mutex()->forks_mutex, NULL);
+	pthread_mutex_init(&get_mutex()->time_mutex, NULL);
 }
 
 void	init_philos(void)

@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:47:10 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:54:14 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:05:32 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print_status(t_philo *philo, char *status)
 {
 	long	time;
 
-	time = get_time(MILLISEC) - get_core()->start_time;
+	time = get_time() - get_core()->start_time;
 	pthread_mutex_lock(&get_mutex()->print_status);
 	printf("%li %d %s\n", time, philo->id, status);
 	pthread_mutex_unlock(&get_mutex()->print_status);
@@ -46,14 +46,13 @@ void	wait_for_threads(t_philo *philo, pthread_t waiter)
 	int	i;
 
 	i = 0;
-	(void)waiter;
 	while (i < get_core()->num_philos)
 	{
 		pthread_join(philo->thread, NULL);
 		philo = philo->next;
 		i++;
 	}
-	// pthread_join(waiter, NULL);
+	pthread_join(waiter, NULL);
 }
 
 // pthread_create(&get_core()->monitor, NULL, monitor, (void *)philo);
@@ -63,7 +62,7 @@ void	create_threads(t_philo *philo)
 	pthread_t	waiter;
 
 	i = 0;
-	get_core()->start_time = get_time(MILLISEC);
+	get_core()->start_time = get_time();
 	if (get_core()->num_philos == 1)
 	{
 		pthread_create(&philo->thread, NULL, dinner_solo, (void *)philo);
@@ -102,4 +101,5 @@ int	main(int argc, char **argv)
 	free_all(philo);
 	return (0);
 }
+
 // print_philo();

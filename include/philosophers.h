@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:46:33 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:43:43 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:12:26 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ typedef enum e_bool
 	FALSE,
 	TRUE
 }						t_bool;
-
-typedef enum e_time
-{
-	SECOND,
-	MILLISEC,
-	MICROSEC
-}						t_time;
 
 typedef struct s_philo
 {
@@ -77,6 +70,7 @@ typedef struct s_mutex
 	pthread_mutex_t		check_eat_mutex;
 	pthread_mutex_t		core_mutex;
 	pthread_mutex_t		forks_mutex;
+	pthread_mutex_t		time_mutex;
 }						t_mutex;
 
 t_data					*get_core(void);
@@ -103,7 +97,7 @@ void					print_status(t_philo *philo, char *status);
 
 // time.c
 
-long					get_time(t_time unit_of_measurement);
+long					get_time(void);
 
 // error.c
 

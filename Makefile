@@ -17,7 +17,7 @@ TEMP_PATH = temp/
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -I. -I./$(INCDIR) -pthread
+CFLAGS	=	-Wall -Werror -Wextra -I. -I./$(INCDIR) -pthread -g3
 RM		=	rm -f
 
 # Output file name
@@ -66,10 +66,10 @@ fclean: clean
 re: fclean all
 
 run: all
-	$(HIDE)./$(NAME) 4 400 200 200
+	$(HIDE)./$(NAME) 4 300 200 200
 
 make_temp:
 	@mkdir -p $(TEMP_PATH)
 
 valgrind: all make_temp 
-	@valgrind -s -q  --tool=helgrind --log-file=$(TEMP_PATH)helgrind.log ./$(NAME) 4 800 200 200
+	@valgrind -s -q --fsanitize=thread --tool=helgrind --log-file=$(TEMP_PATH)helgrind.log ./$(NAME) 4 800 200 200

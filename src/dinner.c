@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:10:31 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:38:46 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:08:25 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*dinner(void *arg)
 	philo = (t_philo *)arg;
 	philo->last_meal = get_core()->start_time;
 	if (philo->id % 2 == 0)
-		usleep(100);
+		usleep(500);
 	take_fork(philo);
 	return (NULL);
 }
