@@ -5,72 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 14:15:04 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:54:26 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/04/02 12:26:03 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/04/09 16:32:04 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
-void	unlock_forks(t_philo *philo)
+static int	philo_dead(t_philo *philo)
+{
+	pthread_mutex_lock(philo->meal_lock);
+	if (get_time() - philo->last_meal >= philo->time_to_die)
+		return (pthread_mutex_unlock(philo->meal_lock), 1);
+	pthread_mutex_unlock(philo->meal_lock);
+	return (0);
+}
+
+static int	check_death(t_philo *philos)
 {
 	int	i;
 
 	i = 0;
-	while (i < get_core()->num_philos)
+	while (i < philos[0].num_philos)
 	{
-		pthread_mutex_unlock(&philo->fork);
-		philo = philo->next;
+		if (philo_dead(&philos[i]))
+		{
+			print_message(&philos[i], philos[i].id, "died");
+			pthread_mutex_lock(philos[i].dead_lock);
+			*philos[i].dead = 1;
+			pthread_mutex_unlock(philos[i].dead_lock);
+			return (1);
+		}
 		i++;
 	}
+	return (0);
 }
 
-t_bool	imdead(t_philo *philo)
+static int	check_all_full(t_philo *philo)
 {
-	t_bool	dead;
+	int	i;
+	int	philos_full;
 
-	pthread_mutex_lock(&get_mutex()->check_dead_mutex);
-	dead = get_core()->dead;
-	pthread_mutex_unlock(&get_mutex()->check_dead_mutex);
-	if (dead == TRUE)
+	i = 0;
+	philos_full = 0;
+	if (philo[0].max_eat == -1)
+		return (0);
+	while (i < philo[0].num_philos)
 	{
-		unlock_forks(philo);
-		return (TRUE);
+		pthread_mutex_lock(philo[i].meal_lock);
+		if (philo[i].meals_eaten >= philo[i].max_eat)
+			philos_full++;
+		pthread_mutex_unlock(philo[i].meal_lock);
+		i++;
 	}
-	if (philo->num_eat == 4)
+	if (philos_full == philo[0].num_philos)
 	{
-		pthread_mutex_lock(&get_mutex()->dead_mutex);
-		get_core()->dead = TRUE;
-		pthread_mutex_unlock(&get_mutex()->dead_mutex);
-		print_status(philo, "is full");
-		unlock_forks(philo);
-		return (TRUE);
+		pthread_mutex_lock(philo[0].dead_lock);
+		*philo->dead = 1;
+		pthread_mutex_unlock(philo[0].dead_lock);
+		return (1);
 	}
-	return (FALSE);
+	return (0);
 }
 
-void	*monitor(void *arg)
+void	*waiter_routine(void *arg)
 {
 	t_philo	*philo;
-	t_bool	time_to_die;
 
 	philo = (t_philo *)arg;
-	return (NULL);
-	while (get_core()->dead == FALSE)
+	while (1)
 	{
-		pthread_mutex_lock(&get_mutex()->dead_mutex);
-		time_to_die = get_time(MILLISEC)
-			- philo->last_meal >= get_core()->time_to_die;
-		pthread_mutex_unlock(&get_mutex()->dead_mutex);
-		if (time_to_die)
-		{
-			pthread_mutex_lock(&get_mutex()->dead_mutex);
-			get_core()->dead = TRUE;
-			pthread_mutex_unlock(&get_mutex()->dead_mutex);
-			print_status(philo, "died");
+		if (check_death(philo) == 1 || check_all_full(philo) == 1)
 			break ;
-		}
-		philo = philo->next;
 	}
-	return (NULL);
+	return (arg);
 }

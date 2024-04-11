@@ -5,101 +5,111 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 14:47:10 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:54:14 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/04/01 17:36:30 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/04/08 09:35:06 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
-void	destroy_mutexes(void)
+static int	input_tratament(char **argv)
 {
-	int		i;
-	t_philo	*philo;
+	int	i;
 
-	i = 0;
-	philo = get_core()->head;
-	while (i < get_core()->num_philos)
+	i = 1;
+	while (argv[i])
 	{
-		pthread_mutex_destroy(&philo->fork);
-		philo = philo->next;
+		if (!ft_isnumber(argv[i]))
+		{
+			printf("Error: argument %d is not a number\n", i);
+			return (0);
+		}
 		i++;
 	}
-	pthread_mutex_destroy(&get_mutex()->print_status);
-	pthread_mutex_destroy(&get_mutex()->dead_mutex);
-	pthread_mutex_destroy(&get_mutex()->check_dead_mutex);
-	pthread_mutex_destroy(&get_mutex()->check_eat_mutex);
+	return (1);
 }
 
-void	print_status(t_philo *philo, char *status)
+static int	max_int(char **argv)
 {
-	long	time;
+	int	i;
 
-	time = get_time(MILLISEC) - get_core()->start_time;
-	pthread_mutex_lock(&get_mutex()->print_status);
-	printf("%li %d %s\n", time, philo->id, status);
-	pthread_mutex_unlock(&get_mutex()->print_status);
+	i = 1;
+	while (argv[i])
+	{
+		if (ft_atol(argv[i]) > 2147483647)
+		{
+			printf("Error: argument %d is too big\n", i);
+			return (0);
+		}
+		if (ft_atol(argv[i]) < -2147483648)
+		{
+			printf("Error: argument %d is too small\n", i);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }
 
-void	wait_for_threads(t_philo *philo, pthread_t waiter)
+static int	param_tratament(char **argv)
+{
+	if (ft_atoi(argv[2]) < 60)
+	{
+		printf("Error: time to die must be at least 60ms\n");
+		return (0);
+	}
+	if (ft_atoi(argv[3]) < 60)
+	{
+		printf("Error: time to eat must be at least 60ms\n");
+		return (0);
+	}
+	if (ft_atoi(argv[4]) < 60)
+	{
+		printf("Error: time to sleep must be at least 60ms\n");
+		return (0);
+	}
+	if (ft_atoi(argv[1]) < 1 || ft_atoi(argv[1]) > 200)
+	{
+		printf("Error: number of philosophers must be between 1 and 200\n");
+		return (0);
+	}
+	return (1);
+}
+
+static void	destroy_mutex(pthread_mutex_t *forks, t_core *core, int num_philos)
 {
 	int	i;
 
 	i = 0;
-	(void)waiter;
-	while (i < get_core()->num_philos)
+	pthread_mutex_destroy(&core->write_lock);
+	pthread_mutex_destroy(&core->meal_lock);
+	pthread_mutex_destroy(&core->dead_lock);
+	while (i < num_philos)
 	{
-		pthread_join(philo->thread, NULL);
-		philo = philo->next;
+		pthread_mutex_destroy(&forks[i]);
 		i++;
 	}
-	// pthread_join(waiter, NULL);
 }
-
-// pthread_create(&get_core()->monitor, NULL, monitor, (void *)philo);
-void	create_threads(t_philo *philo)
-{
-	int			i;
-	pthread_t	waiter;
-
-	i = 0;
-	get_core()->start_time = get_time(MILLISEC);
-	if (get_core()->num_philos == 1)
-	{
-		pthread_create(&philo->thread, NULL, dinner_solo, (void *)philo);
-		pthread_join(philo->thread, NULL);
-		return ;
-	}
-	while (i < get_core()->num_philos)
-	{
-		pthread_create(&philo->thread, NULL, dinner, (void *)philo);
-		philo = philo->next;
-		i++;
-	}
-	pthread_create(&waiter, NULL, monitor, (void *)philo);
-	wait_for_threads(philo, waiter);
-}
-// wait_for_threads(philo);
 
 int	main(int argc, char **argv)
 {
-	t_philo	*philo;
+	pthread_mutex_t	forks[MAX_P];
+	t_philo			philos[MAX_P];
+	t_core			core;
 
 	if (argc != 5 && argc != 6)
 	{
 		printf("Error: wrong number of arguments\n");
 		return (1);
 	}
-	get_core()->num_philos = atoi(argv[1]);
-	get_core()->time_to_die = atoi(argv[2]);
-	get_core()->time_to_eat = atoi(argv[3]) * 1000;
-	get_core()->time_to_sleep = atoi(argv[4]) * 1000;
-	init_philos();
-	init_all_mutex();
-	philo = get_core()->head;
-	create_threads(philo);
-	destroy_mutexes();
-	free_all(philo);
+	if (!input_tratament(argv) || !max_int(argv) || !param_tratament(argv))
+		return (1);
+	memset(forks, 0, sizeof(pthread_mutex_t) * ft_atoi(argv[1]));
+	memset(philos, 0, sizeof(t_philo) * ft_atoi(argv[1]));
+	init_core(&core, philos);
+	init_forks(forks, ft_atoi(argv[1]));
+	init_philos(philos, &core, forks, argv);
+	init_thread(philos);
+	destroy_mutex(forks, &core, ft_atoi(argv[1]));
 	return (0);
 }
-// print_philo();

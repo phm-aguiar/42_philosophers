@@ -5,83 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 14:22:17 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/03/27 10:34:11 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/04/09 14:32:36 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/04/09 16:43:27 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
-void	thinking(t_philo *philo)
+static void	thinking(t_philo *philo)
 {
-	if (imdead(philo))
-		return ;
-	print_status(philo, "is thinking");
-	if (philo->num_forks == 0)
-		take_fork(philo);
+	print_message(philo, philo->id, PINK "is thinking" RESET);
+	usleep(1000);
 }
 
-void	sleeping(t_philo *philo)
+static void	sleeping(t_philo *philo)
 {
-	if (imdead(philo))
-		return ;
-	print_status(philo, "is sleeping");
-	if (imdead(philo))
-		return ;
-	usleep(get_core()->time_to_sleep);
-	if (imdead(philo))
-		return ;
-	thinking(philo);
+	print_message(philo, philo->id, BLUE "is sleeping" RESET);
+	usleep(philo->time_to_sleep * 1000);
 }
 
-void	eating(t_philo *philo)
+static void	eating(t_philo *philo)
 {
-	if (imdead(philo))
-		return ;
-	print_status(philo, "is eating");
-	if (imdead(philo))
-		return ;
-	usleep(get_core()->time_to_eat);
-	if (imdead(philo))
-		return ;
-	pthread_mutex_lock(&get_mutex()->check_eat_mutex);
-	philo->last_meal = get_time(MILLISEC);
-	pthread_mutex_unlock(&get_mutex()->check_eat_mutex);
-	if (imdead(philo))
-		return ;
-	pthread_mutex_unlock(&philo->fork);
-	if (imdead(philo))
-		return ;
-	pthread_mutex_unlock(&philo->next->fork);
-	if (imdead(philo))
-		return ;
-	philo->num_forks = 0;
-	philo->num_eat++;
-	if (imdead(philo))
-		return ;
-	sleeping(philo);
+	print_message(philo, philo->id, YELLOW "is eating" RESET);
+	pthread_mutex_lock(philo->meal_lock);
+	philo->last_meal = get_time();
+	philo->meals_eaten++;
+	pthread_mutex_unlock(philo->meal_lock);
+	usleep(philo->time_to_eat * 1000);
 }
 
-void	take_fork(t_philo *philo)
+void	*routine(void *arg)
 {
-	if (imdead(philo))
-		return ;
-	pthread_mutex_lock(&philo->next->fork);
-	if (imdead(philo))
-		return ;
-	print_status(philo, "has taken a fork");
-	if (imdead(philo))
-		return ;
-	pthread_mutex_lock(&philo->fork);
-	if (imdead(philo))
-		return ;
-	print_status(philo, "has taken a fork");
-	if (imdead(philo))
-		return ;
-	pthread_mutex_lock(&get_mutex()->forks_mutex);
-	philo->num_forks = 2;
-	pthread_mutex_unlock(&get_mutex()->forks_mutex);
-	if (imdead(philo))
-		return ;
-	eating(philo);
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	if (philo->num_philos == 1)
+	{
+		print_message(philo, philo->id, GREEN"has taken a fork"RESET);
+		usleep(philo->time_to_die * 1000);
+		return (arg);
+	}
+	while (!dead_loop(philo))
+	{
+		if (philo->id % 2 == 0)
+			safe_lock_fork(philo->r_fork, philo->l_fork, philo);
+		else
+			safe_lock_fork(philo->l_fork, philo->r_fork, philo);
+		eating(philo);
+		drop_forks(philo);
+		sleeping(philo);
+		thinking(philo);
+	}
+	return (arg);
 }
